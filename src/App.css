@@ -170,3 +170,25 @@ a.media-left.media-bottom {
   color: dodgerblue;
   padding: 15px;
 }
+
+.searchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+input {
+  transition: all .125s ease;
+  background-color: hsla(0,0%,100%,0);
+  margin-left: -24px;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  width: 240px;
+  height: 30px;
+  padding: 10px 20px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding-left: 8px;
+}

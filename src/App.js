@@ -11,6 +11,7 @@ import DAppsCategory from './components/DAppsCategory.js';
 import ContactUs from './components/ContactUs.js';
 import GetEther from './dapps/GetEther/index';
 import SandBox from './components/Sandbox';
+// import Search from './components/Search';
 
 const DAppsCategoryComponent = ({ match }) => (
   <div>

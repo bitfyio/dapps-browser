@@ -5,6 +5,7 @@ class DAppItem extends React.Component {
   render() {
     const item = this.props.item;
     const url = item.url;
+    // console.log(item);
     return (
       <Media className="dappItem" tag="a" href={url}>
         <Media className="mt-1 align media-block">
