@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 import DAppItems from './DAppItems';
+import DAppTopCards from './DAppTopCards';
 import { TrustClient } from '../network/TrustClient';
 import getWeb3 from '../utils/provider';
-// import DAppItem from './DAppItem';
 
 function Footer() {
   return (
@@ -53,20 +53,21 @@ class DApps extends React.Component {
 
   handleInputChange(event) {
     this.setState({ query: event.target.value });
-    console.log(event.target.value);
+    // console.log(event.target.value);
   }
 
   render() {
     const elements = this.state.data || [];
-    // const item = this.props.item;
-    // const items = this.props.items;
-    // console.log(item);
-    // console.log(items);
+    // console.log(elements.results.name);
     const { query } = this.state;
-    const filteredDapp = elements.filter(dapp => dapp.category.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+    const categoryID = '5abcceb4682db901241a0636';
+    const newDApp = elements.filter(item => item.category._id === categoryID);
+    // const othersDApp = elements.filter(item => item.category._id !== categoryID);
+    const searchDapp = elements.filter(item =>
+      item.category.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
     return (
       <div>
-        <div className="searchBar">
+        <div className="SearchBar">
           <form>
             <input
               placeholder="Search for dapp"
@@ -75,8 +76,18 @@ class DApps extends React.Component {
             />
           </form>
         </div>
+        <div className="CardSlider">
+          {newDApp.map(element => (
+            <div key={element.category._id}>
+              <Link to={`category/${element.category._id}`}>
+                <h2 className="categories">{element.category.name}</h2>
+              </Link>
+              <DAppTopCards key={element} items={element.results} />
+            </div>
+          ))}
+        </div>
         <div className="DApps">
-          {filteredDapp.map(element => (
+          {searchDapp.map(element => (
             <div key={element.category._id}>
               <Link to={`category/${element.category._id}`}>
                 <h2 className="categories">{element.category.name}</h2>
